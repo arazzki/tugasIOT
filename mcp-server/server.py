@@ -221,13 +221,13 @@ async def get_antares_latest_data(
     if not app_name or not dev_name or not key:
         return "Error: Application Name, Device Name, atau Access Key Antares belum lengkap."
 
-    url = f"http://platform.antares.id:8080/~/antares-cse/antares-id/{app_name}/{dev_name}/la"
+    url = f"https://platform.antares.id:8443/~/antares-cse/antares-id/{app_name}/{dev_name}/la"
     headers = {
         "X-M2M-Origin": key,
         "Accept": "application/json"
     }
 
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(verify=False) as client:
         try:
             resp = await client.get(url, headers=headers, timeout=10.0)
             resp.raise_for_status()
@@ -271,7 +271,7 @@ async def send_antares_data(
     if not app_name or not dev_name or not key:
         return "Error: Application Name, Device Name, atau Access Key Antares belum lengkap."
 
-    url = f"http://platform.antares.id:8080/~/antares-cse/antares-id/{app_name}/{dev_name}"
+    url = f"https://platform.antares.id:8443/~/antares-cse/antares-id/{app_name}/{dev_name}"
     headers = {
         "X-M2M-Origin": key,
         "Content-Type": "application/json;ty=4",
@@ -281,7 +281,7 @@ async def send_antares_data(
     con_str = json.dumps(data) if isinstance(data, dict) else str(data)
     payload = {"m2m:cin": {"con": con_str}}
 
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(verify=False) as client:
         try:
             resp = await client.post(url, headers=headers, json=payload, timeout=10.0)
             resp.raise_for_status()

@@ -1,24 +1,33 @@
 /*
  * Tugas 4 - IoT Platform Review: Antares IoT (Telkom Indonesia)
  * Mata Kuliah: Internet of Things (ITH3V3)
- * Deskripsi: Mengirimkan data sensor suhu dan kelembaban ke Antares oneM2M Platform via HTTP POST (Content Instance).
+ * Deskripsi: Mengirimkan data telemetri sensor ke Antares oneM2M Platform via HTTPS (Port 8443).
  */
 
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <WiFiClientSecure.h>
 #include "DHT.h"
 
-// Konfigurasi Wi-Fi
-const char* ssid = "NAMA_WIFI";
-const char* password = "PASSWORD_WIFI";
+// Konfigurasi Wi-Fi (Gunakan Wokwi-GUEST jika di simulator Wokwi)
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
 
-// Konfigurasi Antares oneM2M
-const char* antaresServer = "http://platform.antares.id:8080/~/antares-cse/antares-id";
-const char* accessKey = "YOUR_ANTARES_ACCESS_KEY";
-const char* applicationName = "YOUR_APP_NAME";
-const char* deviceName = "YOUR_DEVICE_NAME";
+// Konfigurasi Antares oneM2M (HTTPS Port 8443)
+const char* antaresServer = "https://platform.antares.id:8443/~/antares-cse/antares-id";
 
-// Pinout
+#if __has_include("config.secrets.h")
+  #include "config.secrets.h"
+  const char* accessKey       = ANTARES_ACCESS_KEY;
+  const char* applicationName = ANTARES_APP_NAME;
+  const char* deviceName      = ANTARES_DEV_NAME;
+#else
+  const char* accessKey       = "YOUR_ANTARES_ACCESS_KEY";
+  const char* applicationName = "tugasIOT4";
+  const char* deviceName      = "ESP32Node";
+#endif
+
+// Pinout Sensor & Aktuator
 #define DHTPIN 4
 #define DHTTYPE DHT22
 DHT dht(DHTPIN, DHTTYPE);
@@ -55,10 +64,13 @@ void loop() {
   }
 
   if (WiFi.status() == WL_CONNECTED) {
+    WiFiClientSecure secureClient;
+    secureClient.setInsecure(); // Mengizinkan self-signed / public CA tanpa sertifikat manual
+
     HTTPClient http;
     String endpoint = String(antaresServer) + "/" + applicationName + "/" + deviceName;
 
-    http.begin(endpoint);
+    http.begin(secureClient, endpoint);
     http.addHeader("X-M2M-Origin", accessKey);
     http.addHeader("Content-Type", "application/json;ty=4");
     http.addHeader("Accept", "application/json");
