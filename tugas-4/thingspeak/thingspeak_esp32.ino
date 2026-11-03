@@ -8,9 +8,9 @@
 #include <HTTPClient.h>
 #include "DHT.h"
 
-// Konfigurasi Wi-Fi
-const char* ssid = "NAMA_WIFI";
-const char* password = "PASSWORD_WIFI";
+// Konfigurasi Wi-Fi (Gunakan Wokwi-GUEST jika menjalankan di simulator Wokwi)
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
 
 // Konfigurasi ThingSpeak
 const char* server = "api.thingspeak.com";

@@ -8,15 +8,20 @@
 #include <PubSubClient.h>
 #include "DHT.h"
 
-// Konfigurasi Wi-Fi
-const char* ssid = "NAMA_WIFI";
-const char* password = "PASSWORD_WIFI";
+// Konfigurasi Wi-Fi (Gunakan Wokwi-GUEST jika menjalankan di simulator Wokwi)
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
 
 // Konfigurasi Adafruit IO
 #define IO_SERVER "io.adafruit.com"
 #define IO_SERVERPORT 1883
-#define IO_USERNAME "YOUR_AIO_USERNAME"
-#define IO_KEY "YOUR_AIO_KEY"
+
+#if __has_include("config.secrets.h")
+  #include "config.secrets.h"
+#else
+  #define IO_USERNAME "AriqAzzki"
+  #define IO_KEY "YOUR_AIO_KEY" // Masukkan AIO Key Anda di sini jika tidak memakai config.secrets.h
+#endif
 
 // Topik MQTT Adafruit IO
 const char* TOPIC_TEMP   = IO_USERNAME "/feeds/suhu";
