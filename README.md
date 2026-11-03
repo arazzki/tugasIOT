@@ -44,7 +44,7 @@ Fokus pada protokol lapisan aplikasi berbasis Internet Protocol (IP) yang umum d
 
 ---
 
-### 🔹 [Tugas 5 - Review IoT Platform](file:///e:/Project/tugasIOT/Tugas%205%20-%20Internet%20of%20Things%20-%20Review%20IoT%20Platform-UIW.docx)
+### 🔹 [Tugas 4 - Review IoT Platform](file:///e:/Project/tugasIOT/Tugas%205%20-%20Internet%20of%20Things%20-%20Review%20IoT%20Platform-UIW.docx) *(Sesuai Dokumen Tugas 5)*
 Fokus pada analisis komparatif, review fitur, serta tutorial implementasi platform IoT berbasis cloud:
 1. **Platform yang Di-review:**
    - [ThingSpeak](https://thingspeak.com/) – Platform analisis data dan visualisasi MATLAB untuk IoT.
@@ -55,6 +55,8 @@ Fokus pada analisis komparatif, review fitur, serta tutorial implementasi platfo
    - Integrasi perangkat ESP8266/ESP32 dengan sensor dan aktuator.
    - Pengiriman data telemetri sensor (*uplink*) dan penerimaan perintah kontrol (*downlink*) pada masing-masing platform.
    - Dokumentasi tutorial langkah demi langkah konfigurasi setiap platform.
+3. **Ekstensi Model Context Protocol (MCP Server):**
+   - Menghubungkan ekosistem IoT Platform ke Large Language Model (LLM) melalui MCP Server untuk monitoring data telemetri dan kontrol perangkat via prompt AI.
 
 ---
 
@@ -94,11 +96,16 @@ tugasIOT/
 │   └── tugas3_wifi_dhcp/
 │       └── tugas3_wifi_dhcp.ino
 │
-├── tugas-5/              # Kode sketch & tutorial Tugas 5 (ThingSpeak, Adafruit IO, Arduino Cloud, Antares)
+├── tugas-4/              # Kode sketch & tutorial Tugas 4 (ThingSpeak, Adafruit IO, Arduino Cloud, Antares)
 │   ├── thingspeak/
 │   ├── adafruit_io/
 │   ├── arduino_cloud/
 │   └── antares/
+│
+├── mcp-server/           # MCP (Model Context Protocol) Server untuk integrasi AI & IoT
+│   ├── src/
+│   ├── package.json / requirements.txt
+│   └── README.md
 │
 ├── .gitignore            # Filter file build dan kredensial sensitif
 └── README.md             # Dokumentasi utama repositori
