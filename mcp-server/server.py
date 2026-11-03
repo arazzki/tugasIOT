@@ -29,8 +29,12 @@ except ImportError:
         instructions="IoT Platform MCP Server for ThingSpeak, Adafruit IO, and Antares"
     )
 
-# Muat variabel environment dari .env
-load_dotenv()
+# Muat variabel environment dari .env di direktori yang sama atau root
+env_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(env_path):
+    load_dotenv(env_path)
+else:
+    load_dotenv()
 
 # ==============================================================================
 # 1. ThingSpeak Tools
