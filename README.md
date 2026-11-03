@@ -1,91 +1,80 @@
-# 🌐 Proyek Internet of Things (IoT)
+# 🌐 Tugas Kuliah Internet of Things (ITH3V3)
 
-> **Catatan:** Dokumen ini merupakan template awal/umum (general) untuk proyek IoT. Silakan sesuaikan detail sensor, mikrokontroler, dan platform yang digunakan.
-
----
-
-## 📌 Deskripsi Proyek
-Proyek ini merupakan sistem berbasis **Internet of Things (IoT)** yang dirancang untuk melakukan pemantauan (*monitoring*) dan/atau pengendalian (*controlling*) perangkat secara *real-time* dan jarak jauh melalui jaringan internet.
+Repositori ini berisi kumpulan tugas, implementasi kode, dan dokumentasi laporan untuk mata kuliah **Internet of Things (ITH3V3)**.
 
 ---
 
-## ✨ Fitur Utama
-- **Real-Time Data Monitoring:** Pengambilan data sensor secara periodik dan akurat.
-- **Remote Control / Actuation:** Kendali perangkat (relay, motor, lampu, dll.) melalui internet/aplikasi.
-- **Konektivitas Cloud / Broker:** Pengiriman data menggunakan protokol komunikasi IoT yang ringan dan handal.
-- **Dashboard Visualisasi:** Antarmuka visual (Web / Mobile / Dashboard IoT) untuk memantau status sistem.
-- **Notifikasi & Alert (Opsional):** Peringatan otomatis jika parameter sensor melewati ambang batas tertentu.
+## 📋 Informasi Akademik
+
+- **Mata Kuliah:** Internet of Things (ITH3V3)
+- **Dosen Pengampu:** UIW & PHV
+- **Mahasiswa:** [Nama Lengkap]
+- **NIM:** [Nomor Induk Mahasiswa]
 
 ---
 
-## 🏗️ Arsitektur Sistem
+## 📚 Daftar & Ruang Lingkup Tugas
 
-```mermaid
-flowchart LR
-    A[Sensor / Input] --> B[Mikrokontroler\nESP32 / ESP8266 / Arduino]
-    B --> C[Aktuator / Output\nRelay / Buzzer / LED]
-    B -- Wi-Fi / Protokol\n(MQTT / HTTP / WebSocket) --> D[Cloud / Broker / Server]
-    D --> E[Dashboard / Mobile App / Web]
-```
+### 🔹 [Tugas 2 - Communication Protocol](file:///e:/Project/tugasIOT/Tugas%202%20-%20Internet%20of%20Things%20-%20Communication%20Protocol-UIW.docx)
+Fokus pada pemahaman protokol komunikasi serial kabel (*wired*) dan nirkabel (*wireless*) pada mikrokontroler:
+1. **Universal Asynchronous Receiver Transmitter (UART):** Konsep komunikasi serial asinkron, baud rate, pin TX/RX.
+2. **Serial Peripheral Interface (SPI):** Konsep komunikasi sinkron full-duplex berbasis Master-Slave (MOSI, MISO, SCK, CS/SS).
+3. **Inter-Integrated Circuit (I2C / IIC):** Komunikasi multi-master multi-slave menggunakan 2 jalur kabel (SDA & SCL) dengan pengalamatan berbasis alamat perangkat (*device address*).
+4. **Bluetooth & Zigbee:** Karakteristik, topologi jaringan, efisiensi daya, dan perbandingan jangkauan komunikasi personal area network (PAN/WPAN).
+5. **Implementasi Program (ESP32/ESP8266):**
+   - Pembuatan program berbasis Arduino IDE untuk menampilkan konversi nilai format desimal ke **Biner**, **Heksadesimal**, dan **Oktal** pada Serial Monitor.
+   - Analisis performa dan cara kerja konversi data di mikrokontroler.
+
+---
+
+### 🔹 [Tugas 3 - IP Based Communication Protocol](file:///e:/Project/tugasIOT/Tugas%203%20-%20Internet%20of%20Things%20-%20IP%20Based%20Communication%20Protocol-UIW.docx)
+Fokus pada protokol lapisan aplikasi berbasis Internet Protocol (IP) yang umum digunakan pada ekosistem IoT:
+1. **Message Queuing Telemetry Transport (MQTT):**
+   - Mekanisme arsitektur *Publish-Subscribe* melalui perantara *MQTT Broker*.
+   - Efisiensi overhead header paket dan level Quality of Service (QoS 0, 1, 2).
+2. **Constrained Application Protocol (CoAP):**
+   - Arsitektur berbasis RESTful khusus untuk perangkat dengan sumber daya terbatas (*constrained devices*).
+   - Penggunaan protokol transport UDP untuk efisiensi latensi dan konsumsi bandwidth.
+3. **Komparasi Protokol: CoAP vs HTTP:**
+   - Perbandingan transport layer (UDP vs TCP), ukuran header, model komunikasi (Request/Response & Asynchronous Observe), dan efisiensi energi.
+4. **Implementasi Program (ESP32/ESP8266):**
+   - Menghubungkan modul ESP8266/ESP32 ke jaringan Wi-Fi lokal (Access Point).
+   - Mendapatkan alokasi alamat IP secara dinamis via DHCP dan menampilkannya pada Serial Monitor sebagai verifikasi konektivitas jaringan.
+   - Analisis proses *handshake* dan stabilitas koneksi Wi-Fi.
+
+---
+
+### 🔹 [Tugas 5 - Review IoT Platform](file:///e:/Project/tugasIOT/Tugas%205%20-%20Internet%20of%20Things%20-%20Review%20IoT%20Platform-UIW.docx)
+Fokus pada analisis komparatif, review fitur, serta tutorial implementasi platform IoT berbasis cloud:
+1. **Platform yang Di-review:**
+   - [ThingSpeak](https://thingspeak.com/) – Platform analisis data dan visualisasi MATLAB untuk IoT.
+   - [Adafruit IO](https://io.adafruit.com/) – Platform dashboard IoT interaktif dengan dukungan feed dan trigger MQTT/HTTP.
+   - [Arduino Cloud / IoT](https://create.arduino.cc/iot/) – Ekosistem cloud terintegrasi untuk board Arduino dan ESP.
+   - [Antares IoT](https://antares.id/id/index.html) – Platform IoT enterprise lokal berbasis standar oneM2M dari Telkom Indonesia.
+2. **Eksplorasi & Tutorial Praktis:**
+   - Integrasi perangkat ESP8266/ESP32 dengan sensor dan aktuator.
+   - Pengiriman data telemetri sensor (*uplink*) dan penerimaan perintah kontrol (*downlink*) pada masing-masing platform.
+   - Dokumentasi tutorial langkah demi langkah konfigurasi setiap platform.
 
 ---
 
 ## 🛠️ Kebutuhan Hardware & Software
 
-### 1. Hardware (Perangkat Keras)
-*Sesuaikan dengan komponen yang digunakan:*
-- **Mikrokontroler:** ESP32 / ESP8266 NodeMCU / Arduino Uno + WiFi Shield
-- **Sensor:** *(Contoh: DHT11/DHT22, Ultrasonik HC-SR04, LDR, PIR, MQ-series, dll.)*
-- **Aktuator:** *(Contoh: Modul Relay 5V, Servo SG90, Buzzer, LED)*
-- **Aksesoris:** Breadboard, Kabel Jumper (Male-to-Male / Male-to-Female), Kabel Micro-USB / Type-C, Power Supply / Adaptor
+### Perangkat Keras (Hardware)
+- **Mikrokontroler:** ESP32 Dev Module / ESP8266 NodeMCU
+- **Sensor & Aktuator:** Sensor Suhu/Kelembaban (DHT11/DHT22), LDR, LED, Modul Relay 5V
+- **Konektivitas:** Wi-Fi Access Point / Hotspot
+- **Aksesoris:** Breadboard, Kabel Jumper, Kabel Data Micro-USB/Type-C
 
-### 2. Software & Platform
-- **IDE / Editor:** [Arduino IDE](https://www.arduino.cc/) / [PlatformIO (VS Code)](https://platformio.org/)
-- **Library Pendukung:** *(Contoh: `WiFi.h`, `PubSubClient`, `Adafruit Unified Sensor`, `DHT sensor library`, `ArduinoJson`)*
-- **Protokol & Server:** MQTT (HiveMQ / Mosquitto / EMQX) atau HTTP/REST
-- **Platform IoT / Dashboard:** ThingsBoard / Blynk / Adafruit IO / Firebase / Custom Web App
-
----
-
-## 🔌 Skema Rangkaian (Wiring Pinout)
-
-| Komponen | Pin Mikrokontroler | Keterangan |
-| :--- | :--- | :--- |
-| **VCC Sensor** | 3.3V / 5V | Sumber daya |
-| **GND Sensor** | GND | Ground bersama |
-| **Data Sensor** | GPIO XX (DXX) | Input sinyal sensor |
-| **Control Pin Aktuator** | GPIO YY (DYY) | Output sinyal kontrol (Relay/LED) |
-
-> *(Sertakan gambar skema rangkaian Fritzing / diagram breadboard di folder `assets/` jika ada)*
-
----
-
-## 🚀 Panduan Instalasi & Menjalankan
-
-### 1. Persiapan Environment
-1. Unduh dan pasang **Arduino IDE** atau **VS Code** dengan ekstensi **PlatformIO**.
-2. Pasang board driver (CH340 / CP210x jika diperlukan).
-3. Tambahkan Board Manager URL untuk ESP32/ESP8266:
-   - Masuk ke **Preferences** di Arduino IDE dan tambahkan URL board yang relevan.
-4. Pasang library yang dibutuhkan melalui **Library Manager**.
-
-### 2. Konfigurasi Program
-Buka file program utama (`main.ino` atau `src/main.cpp`), lalu sesuaikan konfigurasi jaringan dan kredensial:
-```cpp
-// Konfigurasi Wi-Fi
-const char* ssid     = "NAMA_WIFI_ANDA";
-const char* password = "PASSWORD_WIFI";
-
-// Konfigurasi Broker / Server IoT (jika menggunakan MQTT/Platform)
-const char* mqtt_server = "broker.hivemq.com";
-const int   mqtt_port   = 1883;
-```
-
-### 3. Upload Program
-1. Hubungkan mikrokontroler ke komputer menggunakan kabel data USB.
-2. Pilih port COM dan jenis board yang sesuai.
-3. Klik tombol **Upload / Flash**.
-4. Buka **Serial Monitor** (set baud rate sesuai kode, misal `115200` atau `9600`) untuk melihat log inisialisasi dan status koneksi.
+### Perangkat Lunak (Software)
+- **IDE:** [Arduino IDE](https://www.arduino.cc/) atau VS Code + PlatformIO
+- **Core Board:** ESP32 by Espressif / ESP8266 by ESP8266 Community
+- **Libraries:**
+  - `WiFi.h` / `ESP8266WiFi.h`
+  - `PubSubClient` (untuk MQTT)
+  - `ThingSpeak` Library
+  - `Adafruit IO Arduino`
+  - `AntaresESPHTTP` / `AntaresESP32MQTT`
 
 ---
 
@@ -93,24 +82,48 @@ const int   mqtt_port   = 1883;
 
 ```text
 tugasIOT/
-├── docs/                 # Dokumentasi, skema rangkaian, dan laporan
-│   └── wiring-diagram.png
-├── src/                  # Kode sumber firmware / mikrokontroler
-│   ├── main.ino          # File utama sketch Arduino/ESP
-│   └── config.h          # Konfigurasi WiFi, pin, dan server
-├── dashboard/            # (Opsional) Kode antarmuka web / dashboard lokal
-├── .gitignore            # File yang diabaikan oleh Git
-└── README.md             # Dokumentasi utama proyek
+├── Tugas 2 - Internet of Things - Communication Protocol-UIW.docx
+├── Tugas 3 - Internet of Things - IP Based Communication Protocol-UIW.docx
+├── Tugas 5 - Internet of Things - Review IoT Platform-UIW.docx
+│
+├── tugas-2/              # Kode sketch & laporan Tugas 2 (Konversi Biner/Hexa/Oktal)
+│   └── tugas2_radix_converter/
+│       └── tugas2_radix_converter.ino
+│
+├── tugas-3/              # Kode sketch & laporan Tugas 3 (Koneksi WiFi & DHCP IP)
+│   └── tugas3_wifi_dhcp/
+│       └── tugas3_wifi_dhcp.ino
+│
+├── tugas-5/              # Kode sketch & tutorial Tugas 5 (ThingSpeak, Adafruit IO, Arduino Cloud, Antares)
+│   ├── thingspeak/
+│   ├── adafruit_io/
+│   ├── arduino_cloud/
+│   └── antares/
+│
+├── .gitignore            # Filter file build dan kredensial sensitif
+└── README.md             # Dokumentasi utama repositori
 ```
 
 ---
 
-## 👥 Tim & Pengembang
-- **Nama Mahasiswa / Pengembang:** [Nama Anda]
-- **NIM:** [NIM Anda]
-- **Program Studi / Mata Kuliah:** [Internet of Things / Teknik Informatika / Sistem Komputer]
+## 🚀 Panduan Penggunaan & Upload Kode
+
+1. **Clone Repositori:**
+   ```bash
+   git clone https://github.com/arazzki/tugasIOT.git
+   cd tugasIOT
+   ```
+2. **Buka Program di Arduino IDE:**
+   - Buka file sketch `.ino` sesuai tugas yang ingin dijalankan.
+   - Pilih jenis board (`Tools > Board > ESP32 Dev Module` atau `NodeMCU 1.0`).
+   - Pilih COM Port yang terhubung.
+3. **Konfigurasi Kredensial:**
+   - Sesuaikan SSID, Password Wi-Fi, dan API Key platform pada kode.
+4. **Upload & Monitor:**
+   - Klik tombol **Upload**.
+   - Buka **Serial Monitor** pada baud rate `115200` (atau sesuai konfigurasi `Serial.begin()`).
 
 ---
 
-## 📄 Lisensi
-Proyek ini dibuat untuk keperluan akademik/tugas mata kuliah Internet of Things (IoT).
+## 📄 Lisensi & Hak Cipta
+Dokumentasi dan kode dalam repositori ini disusun untuk memenuhi tugas akademik mata kuliah Internet of Things (ITH3V3).
