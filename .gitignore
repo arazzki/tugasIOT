@@ -28,3 +28,6 @@ venv/
 
 # Microsoft Office temp files
 ~$*
+
+# Word documents (reports submitted separately via LMS)
+*.docx

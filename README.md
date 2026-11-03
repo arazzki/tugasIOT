@@ -1,6 +1,8 @@
-# 🌐 Tugas Kuliah Internet of Things (ITH3V3)
+# 🌐 Tugas 4 - Review IoT Platform & MCP Server (ITH3V3)
 
-Repositori ini berisi kumpulan tugas, implementasi kode, dan dokumentasi laporan untuk mata kuliah **Internet of Things (ITH3V3)**.
+Repositori ini berisi implementasi kode, simulasi Wokwi, konfigurasi platform IoT, serta pengembangan **Model Context Protocol (MCP) Server** untuk **Tugas 4 (Review & Implementasi IoT Platform)** pada mata kuliah **Internet of Things (ITH3V3)**.
+
+> 👥 **Catatan Kelompok:** Proyek ini merupakan bagian dari tugas kelompok, di mana repositori ini berfokus khusus pada penyelesaian **Tugas 4 (Review 4 IoT Platform + Inovasi MCP Server)**.
 
 ---
 
@@ -8,75 +10,45 @@ Repositori ini berisi kumpulan tugas, implementasi kode, dan dokumentasi laporan
 
 - **Mata Kuliah:** Internet of Things (ITH3V3)
 - **Dosen Pengampu:** UIW & PHV
-- **Mahasiswa:** Ariq Azzki
+- **Mahasiswa (Bagian Tugas 4):** Ariq Azzki
 - **NIM:** 103032400138
 
 ---
 
-## 📚 Daftar & Ruang Lingkup Tugas
+## 📚 Ruang Lingkup Tugas 4
 
-### 🔹 [Tugas 2 - Communication Protocol](file:///e:/Project/tugasIOT/Tugas%202%20-%20Internet%20of%20Things%20-%20Communication%20Protocol-UIW.docx)
-Fokus pada pemahaman protokol komunikasi serial kabel (*wired*) dan nirkabel (*wireless*) pada mikrokontroler:
-1. **Universal Asynchronous Receiver Transmitter (UART):** Konsep komunikasi serial asinkron, baud rate, pin TX/RX.
-2. **Serial Peripheral Interface (SPI):** Konsep komunikasi sinkron full-duplex berbasis Master-Slave (MOSI, MISO, SCK, CS/SS).
-3. **Inter-Integrated Circuit (I2C / IIC):** Komunikasi multi-master multi-slave menggunakan 2 jalur kabel (SDA & SCL) dengan pengalamatan berbasis alamat perangkat (*device address*).
-4. **Bluetooth & Zigbee:** Karakteristik, topologi jaringan, efisiensi daya, dan perbandingan jangkauan komunikasi personal area network (PAN/WPAN).
-5. **Implementasi Program (ESP32/ESP8266):**
-   - Pembuatan program berbasis Arduino IDE untuk menampilkan konversi nilai format desimal ke **Biner**, **Heksadesimal**, dan **Oktal** pada Serial Monitor.
-   - Analisis performa dan cara kerja konversi data di mikrokontroler.
+Fokus pada analisis komparatif, review fitur, serta tutorial dan pengujian implementasi platform IoT berbasis cloud:
 
----
+1. **Platform yang Di-review & Diuji Secara Live:**
+   - [**ThingSpeak**](https://thingspeak.com/) – Channel ID `3564706` (Telemetri data sensor).
+   - [**Adafruit IO**](https://io.adafruit.com/AriqAzzki/feeds) – Feeds `suhu`, `kelembaban`, dan kendali `saklar-relay` dua arah.
+   - [**Antares IoT (Telkom)**](https://antares.id/) – Aplikasi `tugasIOT4` / Device `ESP32Node` (oneM2M HTTPS Port 8443).
+   - [**Arduino Cloud / IoT**](https://create.arduino.cc/iot/) – Ekosistem cloud terpadu dengan sinkronisasi variabel.
 
-### 🔹 [Tugas 3 - IP Based Communication Protocol](file:///e:/Project/tugasIOT/Tugas%203%20-%20Internet%20of%20Things%20-%20IP%20Based%20Communication%20Protocol-UIW.docx)
-Fokus pada protokol lapisan aplikasi berbasis Internet Protocol (IP) yang umum digunakan pada ekosistem IoT:
-1. **Message Queuing Telemetry Transport (MQTT):**
-   - Mekanisme arsitektur *Publish-Subscribe* melalui perantara *MQTT Broker*.
-   - Efisiensi overhead header paket dan level Quality of Service (QoS 0, 1, 2).
-2. **Constrained Application Protocol (CoAP):**
-   - Arsitektur berbasis RESTful khusus untuk perangkat dengan sumber daya terbatas (*constrained devices*).
-   - Penggunaan protokol transport UDP untuk efisiensi latensi dan konsumsi bandwidth.
-3. **Komparasi Protokol: CoAP vs HTTP:**
-   - Perbandingan transport layer (UDP vs TCP), ukuran header, model komunikasi (Request/Response & Asynchronous Observe), dan efisiensi energi.
-4. **Implementasi Program (ESP32/ESP8266):**
-   - Menghubungkan modul ESP8266/ESP32 ke jaringan Wi-Fi lokal (Access Point).
-   - Mendapatkan alokasi alamat IP secara dinamis via DHCP dan menampilkannya pada Serial Monitor sebagai verifikasi konektivitas jaringan.
-   - Analisis proses *handshake* dan stabilitas koneksi Wi-Fi.
-
----
-
-### 🔹 [Tugas 4 - Review IoT Platform](file:///e:/Project/tugasIOT/Tugas%205%20-%20Internet%20of%20Things%20-%20Review%20IoT%20Platform-UIW.docx) *(Sesuai Dokumen Tugas 5)*
-Fokus pada analisis komparatif, review fitur, serta tutorial implementasi platform IoT berbasis cloud:
-1. **Platform yang Di-review:**
-   - [ThingSpeak](https://thingspeak.com/) – Platform analisis data dan visualisasi MATLAB untuk IoT.
-   - [Adafruit IO](https://io.adafruit.com/) – Platform dashboard IoT interaktif dengan dukungan feed dan trigger MQTT/HTTP.
-   - [Arduino Cloud / IoT](https://create.arduino.cc/iot/) – Ekosistem cloud terintegrasi untuk board Arduino dan ESP.
-   - [Antares IoT](https://antares.id/id/index.html) – Platform IoT enterprise lokal berbasis standar oneM2M dari Telkom Indonesia.
 2. **Eksplorasi & Tutorial Praktis:**
-   - Integrasi perangkat ESP8266/ESP32 dengan sensor dan aktuator.
-   - Pengiriman data telemetri sensor (*uplink*) dan penerimaan perintah kontrol (*downlink*) pada masing-masing platform.
-   - Dokumentasi tutorial langkah demi langkah konfigurasi setiap platform.
-3. **Ekstensi Model Context Protocol (MCP Server):**
-   - Menghubungkan ekosistem IoT Platform ke Large Language Model (LLM) melalui MCP Server untuk monitoring data telemetri dan kontrol perangkat via prompt AI.
+   - Integrasi firmware ESP32 dengan sensor suhu/kelembaban (DHT22) dan aktuator (Relay).
+   - Skema simulasi virtual interaktif menggunakan [**Wokwi Simulator**](https://wokwi.com/) (menggunakan Wi-Fi `Wokwi-GUEST`).
+   - Pengiriman telemetri sensor (*uplink*) dan kontrol aktuator (*downlink*).
+
+3. **Inovasi Model Context Protocol (MCP) Server:**
+   - Server perantara berbasis Python (`mcp` SDK) yang memungkinkan Artificial Intelligence (seperti Antigravity, Claude, atau Cursor) untuk berinteraksi langsung dengan platform IoT (membaca feed data sensor dan mengendalikan aktuator secara otonom).
 
 ---
 
 ## 🛠️ Kebutuhan Hardware & Software
 
-### Perangkat Keras (Hardware)
-- **Mikrokontroler:** ESP32 Dev Module / ESP8266 NodeMCU
-- **Sensor & Aktuator:** Sensor Suhu/Kelembaban (DHT11/DHT22), LDR, LED, Modul Relay 5V
-- **Konektivitas:** Wi-Fi Access Point / Hotspot
-- **Aksesoris:** Breadboard, Kabel Jumper, Kabel Data Micro-USB/Type-C
+### Perangkat & Lingkungan Simulasi
+- **Mikrokontroler:** ESP32 Dev Module (Fisik atau Virtual via [Wokwi](https://wokwi.com/))
+- **Sensor & Aktuator:** Sensor Suhu/Kelembaban (DHT22), Modul Relay 5V, Indikator LED
+- **Konektivitas:** Wi-Fi (SSID `Wokwi-GUEST` untuk simulasi atau Wi-Fi Access Point fisik)
 
-### Perangkat Lunak (Software)
-- **IDE:** [Arduino IDE](https://www.arduino.cc/) atau VS Code + PlatformIO
-- **Core Board:** ESP32 by Espressif / ESP8266 by ESP8266 Community
-- **Libraries:**
-  - `WiFi.h` / `ESP8266WiFi.h`
-  - `PubSubClient` (untuk MQTT)
-  - `ThingSpeak` Library
-  - `Adafruit IO Arduino`
-  - `AntaresESPHTTP` / `AntaresESP32MQTT`
+### Perangkat Lunak & Pustaka
+- **IDE:** Arduino IDE / VS Code
+- **Runtime MCP Server:** Python 3.10+ (`mcp`, `httpx`, `python-dotenv`)
+- **Libraries Arduino/Wokwi:**
+  - `WiFi.h` & `WiFiClientSecure.h`
+  - `PubSubClient` (untuk MQTT Adafruit IO)
+  - `DHT sensor library`
 
 ---
 
@@ -84,30 +56,20 @@ Fokus pada analisis komparatif, review fitur, serta tutorial implementasi platfo
 
 ```text
 tugasIOT/
-├── Tugas 2 - Internet of Things - Communication Protocol-UIW.docx
-├── Tugas 3 - Internet of Things - IP Based Communication Protocol-UIW.docx
-├── Tugas 5 - Internet of Things - Review IoT Platform-UIW.docx
+├── tugas-4/              # Kode sketch Arduino & skema Tugas 4
+│   ├── thingspeak/       # Firmware ESP32 ThingSpeak
+│   ├── adafruit_io/      # Firmware ESP32 MQTT Adafruit IO
+│   ├── antares/          # Firmware ESP32 oneM2M HTTPS Antares
+│   ├── arduino_cloud/    # Firmware ESP32 Arduino IoT Cloud
+│   └── wokwi/            # Konfigurasi simulasi Wokwi (diagram.json)
 │
-├── tugas-2/              # Kode sketch & laporan Tugas 2 (Konversi Biner/Hexa/Oktal)
-│   └── tugas2_radix_converter/
-│       └── tugas2_radix_converter.ino
+├── mcp-server/           # MCP (Model Context Protocol) Server IoT
+│   ├── server.py         # Script utama server FastMCP / MCPServer
+│   ├── requirements.txt  # Dependensi Python
+│   ├── .env.example      # Template konfigurasi API Key
+│   └── README.md         # Panduan penggunaan MCP Server
 │
-├── tugas-3/              # Kode sketch & laporan Tugas 3 (Koneksi WiFi & DHCP IP)
-│   └── tugas3_wifi_dhcp/
-│       └── tugas3_wifi_dhcp.ino
-│
-├── tugas-4/              # Kode sketch & tutorial Tugas 4 (ThingSpeak, Adafruit IO, Arduino Cloud, Antares)
-│   ├── thingspeak/
-│   ├── adafruit_io/
-│   ├── arduino_cloud/
-│   └── antares/
-│
-├── mcp-server/           # MCP (Model Context Protocol) Server untuk integrasi AI & IoT
-│   ├── src/
-│   ├── package.json / requirements.txt
-│   └── README.md
-│
-├── .gitignore            # Filter file build dan kredensial sensitif
+├── .gitignore            # Filter file build, .docx, dan kredensial sensitif
 └── README.md             # Dokumentasi utama repositori
 ```
 
