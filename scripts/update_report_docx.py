@@ -172,8 +172,18 @@ def fill_report(nama_mahasiswa: str, nim: str, docx_path: str = "Tugas 5 - Inter
     add_bullet("get_antares_latest_data: Memungkinkan AI mengekstrak payload oneM2M dari perangkat Antares.", "Tool 3:")
     add_bullet("Menghilangkan gap antara antarmuka AI dan dunia fisik (Cyber-Physical System), mewujudkan ekosistem Smart IoT Agent.", "Dampak Arsitektur:")
 
+    # --- BAGIAN 4: BUKTI PENGUJIAN EMPIRIS & VERIFIKASI LIVE ---
+    add_p("D. Bukti Pengujian Empiris & Verifikasi Live Platform", heading_level=1)
+    add_p(
+        "Pengujian fungsional dan transmisi telemetri telah berhasil diverifikasi secara live pada ketiga platform IoT "
+        "yang telah dikonfigurasi:"
+    )
+    add_bullet("Channel ID: 3564706 (tugas4) | Status: Terhubung (HTTP 200 OK) | Entry ID 1 & 2 berhasil dicatat dengan nilai suhu 28.5 °C dan 29.8 °C.", "1. ThingSpeak: ")
+    add_bullet("User: AriqAzzki | Feeds dibuat: 'suhu' (28.7 °C), 'kelembaban' (63.5 %), dan 'saklar-relay' (Berhasil di-toggle ON -> OFF secara realtime via MCP).", "2. Adafruit IO: ")
+    add_bullet("Application: tugasIOT4 | Device: ESP32Node | Port: HTTPS 8443 | Payload JSON cin (cin_NWQBhKCI17l0HMKHTVYIv4TeFAWPTMda) berhasil diunggah dan dibaca kembali secara valid.", "3. Antares IoT: ")
+
     # --- KESIMPULAN ---
-    add_p("D. Kesimpulan", heading_level=1)
+    add_p("E. Kesimpulan", heading_level=1)
     add_p(
         "Keempat platform IoT memiliki keunggulan spesifik masing-masing: ThingSpeak sangat unggul untuk komputasi analitik "
         "dan riset data sensor; Adafruit IO adalah yang terbaik untuk prototyping responsif dan kontrol realtime; Arduino Cloud "
