@@ -8,8 +8,8 @@ Repositori ini berisi kumpulan tugas, implementasi kode, dan dokumentasi laporan
 
 - **Mata Kuliah:** Internet of Things (ITH3V3)
 - **Dosen Pengampu:** UIW & PHV
-- **Mahasiswa:** [Nama Lengkap]
-- **NIM:** [Nomor Induk Mahasiswa]
+- **Mahasiswa:** Ariq Azzki
+- **NIM:** 103032400138
 
 ---
 
