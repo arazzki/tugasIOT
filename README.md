@@ -18,28 +18,17 @@ Repositori ini merupakan repositori bersama (*group repository*) untuk pengerjaa
 
 ---
 
-## 📚 Ruang Lingkup & Cakupan Tugas
+## 📚 Ruang Lingkup Tugas Kelompok
 
-### 🔹 [Tugas 2 - Communication Protocol](file:///e:/Project/tugasIOT/tugas-2/tugas2_radix_converter/tugas2_radix_converter.ino)
-Fokus pada pemahaman protokol komunikasi serial kabel (*wired*) dan nirkabel (*wireless*) pada mikrokontroler:
-1. **Universal Asynchronous Receiver Transmitter (UART):** Komunikasi asinkron titik-ke-titik, baud rate, framing data (TX/RX).
-2. **Serial Peripheral Interface (SPI):** Komunikasi sinkron berkecepatan tinggi berbasis Master-Slave (MOSI, MISO, SCK, CS).
-3. **Inter-Integrated Circuit (I2C / IIC):** Komunikasi berbasis bus dua kawat (SDA & SCL) dengan pengalamatan 7-bit/10-bit.
-4. **Bluetooth & Zigbee:** Karakteristik perbandingan WPAN (Personal Area Network), konsumsi daya BLE vs topologi mesh Zigbee.
-5. **Implementasi Program (ESP32):** Program konversi radiks bilangan (Desimal $\rightarrow$ Biner, Heksadesimal, Oktal) via Serial Monitor dengan pengukuran waktu komputasi mikrosekon.
+Repositori ini merepresentasikan pembagian tugas dalam kelompok, di mana modul implementasi kode dan server yang berada pada repositori ini difokuskan pada **Tugas 4** (yang dikerjakan oleh **Ariq Azzki**):
+
+- **Tugas 2:** Communication Protocol (Dikerjakan oleh anggota kelompok masing-masing).
+- **Tugas 3:** IP Based Communication Protocol (Dikerjakan oleh anggota kelompok masing-masing).
+- **Tugas 4:** Review 4 Platform IoT, Simulasi Wokwi & MCP Server (**Diimplementasikan pada repositori ini oleh Ariq Azzki**).
 
 ---
 
-### 🔹 [Tugas 3 - IP Based Communication Protocol](file:///e:/Project/tugasIOT/tugas-3/tugas3_wifi_dhcp/tugas3_wifi_dhcp.ino)
-Fokus pada protokol lapisan aplikasi berbasis Internet Protocol (IP) untuk ekosistem IoT:
-1. **Message Queuing Telemetry Transport (MQTT):** Arsitektur Publish-Subscribe melalui perantara MQTT Broker, efisiensi header 2 byte, dan level Quality of Service (QoS 0, 1, 2).
-2. **Constrained Application Protocol (CoAP):** Protokol web berbasis RESTful untuk perangkat terbatas, berjalan di atas UDP port 5683.
-3. **Komparasi Mendalam CoAP vs HTTP:** Perbandingan overhead header, latensi UDP vs TCP 3-way handshake, dan transmisi multicast.
-4. **Implementasi Program (ESP32):** Menghubungkan perangkat ke Access Point Wi-Fi (mendukung router fisik atau `Wokwi-GUEST`), negosiasi DHCP DORA, serta pembacaan IP dan subnet ke Serial Monitor.
-
----
-
-### 🔹 [Tugas 4 - Review IoT Platform & Inovasi MCP Server](file:///e:/Project/tugasIOT/tugas-4/)
+### 🔹 Fokus Implementasi: Tugas 4 - Review IoT Platform & Inovasi MCP Server
 Fokus pada analisis komparatif, pengujian live 4 platform IoT cloud, serta inovasi AI Agentic:
 1. **Platform yang Di-review & Diuji Secara Live:**
    - [**ThingSpeak**](https://thingspeak.com/) – Channel ID `3564706` (Telemetri data sensor).
@@ -76,15 +65,7 @@ Fokus pada analisis komparatif, pengujian live 4 platform IoT cloud, serta inova
 
 ```text
 tugasIOT/
-├── tugas-2/              # Tugas 2: Communication Protocol
-│   └── tugas2_radix_converter/
-│       └── tugas2_radix_converter.ino
-│
-├── tugas-3/              # Tugas 3: IP Based Communication Protocol
-│   └── tugas3_wifi_dhcp/
-│       └── tugas3_wifi_dhcp.ino
-│
-├── tugas-4/              # Tugas 4: Review 4 Platform IoT & Simulasi Wokwi
+├── tugas-4/              # Implementasi Tugas 4: Review 4 Platform IoT & Wokwi
 │   ├── thingspeak/       # Firmware ESP32 ThingSpeak (Channel 3564706)
 │   ├── adafruit_io/      # Firmware ESP32 MQTT Adafruit IO
 │   ├── antares/          # Firmware ESP32 oneM2M HTTPS Antares
