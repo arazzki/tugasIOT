@@ -1,8 +1,8 @@
 #include <WiFi.h>
 
 
-const char* ssid = "Wokwi-GUEST";
-const char* password = "";
+const char* ssid = "iPhone";
+const char* password = "123456789";
 
 void setup() {
   Serial.begin(115200);
