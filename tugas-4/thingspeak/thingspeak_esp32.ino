@@ -14,7 +14,13 @@ const char* password = "";
 
 // Konfigurasi ThingSpeak
 const char* server = "api.thingspeak.com";
-const char* writeAPIKey = "VC8CYXGXO2XKIXVF";
+
+#if __has_include("config.secrets.h")
+  #include "config.secrets.h"
+  const char* writeAPIKey = THINGSPEAK_WRITE_API_KEY;
+#else
+  const char* writeAPIKey = "YOUR_THINGSPEAK_WRITE_API_KEY"; // Masukkan Write API Key jika tidak memakai config.secrets.h
+#endif
 
 // Konfigurasi Sensor DHT
 #define DHTPIN 4
